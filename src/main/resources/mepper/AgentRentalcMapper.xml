@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liudong.dao.AgentRentalcMapper">
+  <resultMap id="BaseResultMap" type="com.liudong.pojo.AgentRentalc">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name_of_agent" jdbcType="VARCHAR" property="nameOfAgent" />
+    <result column="contact_number" jdbcType="INTEGER" property="contactNumber" />
+    <result column="responsibility_agreement" jdbcType="INTEGER" property="responsibilityAgreement" />
+    <result column="agent_ID_number" jdbcType="VARCHAR" property="agentIdNumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name_of_agent, contact_number, responsibility_agreement, agent_ID_number
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from agent_rentalc
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from agent_rentalc
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.liudong.pojo.AgentRentalc">
+    insert into agent_rentalc (id, name_of_agent, contact_number, 
+      responsibility_agreement, agent_ID_number)
+    values (#{id,jdbcType=INTEGER}, #{nameOfAgent,jdbcType=VARCHAR}, #{contactNumber,jdbcType=INTEGER}, 
+      #{responsibilityAgreement,jdbcType=INTEGER}, #{agentIdNumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liudong.pojo.AgentRentalc">
+    insert into agent_rentalc
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="nameOfAgent != null">
+        name_of_agent,
+      </if>
+      <if test="contactNumber != null">
+        contact_number,
+      </if>
+      <if test="responsibilityAgreement != null">
+        responsibility_agreement,
+      </if>
+      <if test="agentIdNumber != null">
+        agent_ID_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="nameOfAgent != null">
+        #{nameOfAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="contactNumber != null">
+        #{contactNumber,jdbcType=INTEGER},
+      </if>
+      <if test="responsibilityAgreement != null">
+        #{responsibilityAgreement,jdbcType=INTEGER},
+      </if>
+      <if test="agentIdNumber != null">
+        #{agentIdNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudong.pojo.AgentRentalc">
+    update agent_rentalc
+    <set>
+      <if test="nameOfAgent != null">
+        name_of_agent = #{nameOfAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="contactNumber != null">
+        contact_number = #{contactNumber,jdbcType=INTEGER},
+      </if>
+      <if test="responsibilityAgreement != null">
+        responsibility_agreement = #{responsibilityAgreement,jdbcType=INTEGER},
+      </if>
+      <if test="agentIdNumber != null">
+        agent_ID_number = #{agentIdNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liudong.pojo.AgentRentalc">
+    update agent_rentalc
+    set name_of_agent = #{nameOfAgent,jdbcType=VARCHAR},
+      contact_number = #{contactNumber,jdbcType=INTEGER},
+      responsibility_agreement = #{responsibilityAgreement,jdbcType=INTEGER},
+      agent_ID_number = #{agentIdNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

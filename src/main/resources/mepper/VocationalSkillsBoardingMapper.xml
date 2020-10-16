@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liudong.dao.VocationalSkillsBoardingMapper">
+  <resultMap id="BaseResultMap" type="com.liudong.pojo.VocationalSkillsBoarding">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="vocational_skill_name" jdbcType="VARCHAR" property="vocationalSkillName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, vocational_skill_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from vocational_skills_boarding
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from vocational_skills_boarding
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.liudong.pojo.VocationalSkillsBoarding">
+    insert into vocational_skills_boarding (id, vocational_skill_name)
+    values (#{id,jdbcType=INTEGER}, #{vocationalSkillName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liudong.pojo.VocationalSkillsBoarding">
+    insert into vocational_skills_boarding
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="vocationalSkillName != null">
+        vocational_skill_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="vocationalSkillName != null">
+        #{vocationalSkillName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudong.pojo.VocationalSkillsBoarding">
+    update vocational_skills_boarding
+    <set>
+      <if test="vocationalSkillName != null">
+        vocational_skill_name = #{vocationalSkillName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liudong.pojo.VocationalSkillsBoarding">
+    update vocational_skills_boarding
+    set vocational_skill_name = #{vocationalSkillName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

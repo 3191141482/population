@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liudong.dao.AddressDetailedMapper">
+  <resultMap id="BaseResultMap" type="com.liudong.pojo.AddressDetailed">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="county" jdbcType="VARCHAR" property="county" />
+    <result column="township" jdbcType="VARCHAR" property="township" />
+    <result column="village" jdbcType="VARCHAR" property="village" />
+    <result column="household" jdbcType="VARCHAR" property="household" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, province, city, county, township, village, household
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from address_detailed
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from address_detailed
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.liudong.pojo.AddressDetailed">
+    insert into address_detailed (id, province, city, 
+      county, township, village, 
+      household)
+    values (#{id,jdbcType=INTEGER}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{county,jdbcType=VARCHAR}, #{township,jdbcType=VARCHAR}, #{village,jdbcType=VARCHAR}, 
+      #{household,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liudong.pojo.AddressDetailed">
+    insert into address_detailed
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="county != null">
+        county,
+      </if>
+      <if test="township != null">
+        township,
+      </if>
+      <if test="village != null">
+        village,
+      </if>
+      <if test="household != null">
+        household,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null">
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="township != null">
+        #{township,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null">
+        #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="household != null">
+        #{household,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudong.pojo.AddressDetailed">
+    update address_detailed
+    <set>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null">
+        county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="township != null">
+        township = #{township,jdbcType=VARCHAR},
+      </if>
+      <if test="village != null">
+        village = #{village,jdbcType=VARCHAR},
+      </if>
+      <if test="household != null">
+        household = #{household,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liudong.pojo.AddressDetailed">
+    update address_detailed
+    set province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      township = #{township,jdbcType=VARCHAR},
+      village = #{village,jdbcType=VARCHAR},
+      household = #{household,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

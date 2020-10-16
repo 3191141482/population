@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liudong.dao.SpouseInformationMapper">
+  <resultMap id="BaseResultMap" type="com.liudong.pojo.SpouseInformation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="spouse_name" jdbcType="VARCHAR" property="spouseName" />
+    <result column="spouse_identification_number" jdbcType="VARCHAR" property="spouseIdentificationNumber" />
+    <result column="address_of_current_residence" jdbcType="VARCHAR" property="addressOfCurrentResidence" />
+    <result column="
+
+employment_status" jdbcType="VARCHAR" property="
+
+employmentStatus" />
+    <result column="work_unit" jdbcType="VARCHAR" property="workUnit" />
+    <result column="personal_contact_number" jdbcType="VARCHAR" property="personalContactNumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, spouse_name, spouse_identification_number, address_of_current_residence, 
+
+employment_status, 
+    work_unit, personal_contact_number
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from spouse_information
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from spouse_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.liudong.pojo.SpouseInformation">
+    insert into spouse_information (id, spouse_name, spouse_identification_number, 
+      address_of_current_residence, 
+
+employment_status, 
+      work_unit, personal_contact_number)
+    values (#{id,jdbcType=INTEGER}, #{spouseName,jdbcType=VARCHAR}, #{spouseIdentificationNumber,jdbcType=VARCHAR}, 
+      #{addressOfCurrentResidence,jdbcType=VARCHAR}, #{
+
+employmentStatus,jdbcType=VARCHAR}, 
+      #{workUnit,jdbcType=VARCHAR}, #{personalContactNumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liudong.pojo.SpouseInformation">
+    insert into spouse_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="spouseName != null">
+        spouse_name,
+      </if>
+      <if test="spouseIdentificationNumber != null">
+        spouse_identification_number,
+      </if>
+      <if test="addressOfCurrentResidence != null">
+        address_of_current_residence,
+      </if>
+      <if test="
+
+employmentStatus != null">
+        
+
+employment_status,
+      </if>
+      <if test="workUnit != null">
+        work_unit,
+      </if>
+      <if test="personalContactNumber != null">
+        personal_contact_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="spouseName != null">
+        #{spouseName,jdbcType=VARCHAR},
+      </if>
+      <if test="spouseIdentificationNumber != null">
+        #{spouseIdentificationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="addressOfCurrentResidence != null">
+        #{addressOfCurrentResidence,jdbcType=VARCHAR},
+      </if>
+      <if test="
+
+employmentStatus != null">
+        #{
+
+employmentStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="workUnit != null">
+        #{workUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="personalContactNumber != null">
+        #{personalContactNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudong.pojo.SpouseInformation">
+    update spouse_information
+    <set>
+      <if test="spouseName != null">
+        spouse_name = #{spouseName,jdbcType=VARCHAR},
+      </if>
+      <if test="spouseIdentificationNumber != null">
+        spouse_identification_number = #{spouseIdentificationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="addressOfCurrentResidence != null">
+        address_of_current_residence = #{addressOfCurrentResidence,jdbcType=VARCHAR},
+      </if>
+      <if test="
+
+employmentStatus != null">
+        
+
+employment_status = #{
+
+employmentStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="workUnit != null">
+        work_unit = #{workUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="personalContactNumber != null">
+        personal_contact_number = #{personalContactNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liudong.pojo.SpouseInformation">
+    update spouse_information
+    set spouse_name = #{spouseName,jdbcType=VARCHAR},
+      spouse_identification_number = #{spouseIdentificationNumber,jdbcType=VARCHAR},
+      address_of_current_residence = #{addressOfCurrentResidence,jdbcType=VARCHAR},
+      
+
+employment_status = #{
+
+employmentStatus,jdbcType=VARCHAR},
+      work_unit = #{workUnit,jdbcType=VARCHAR},
+      personal_contact_number = #{personalContactNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liudong.dao.SituationOfLandlordAndLessorcMapper">
+  <resultMap id="BaseResultMap" type="com.liudong.pojo.SituationOfLandlordAndLessorc">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name_of_landlord" jdbcType="VARCHAR" property="nameOfLandlord" />
+    <result column="contact_number" jdbcType="INTEGER" property="contactNumber" />
+    <result column="public_security_responsibility" jdbcType="INTEGER" property="publicSecurityResponsibility" />
+    <result column="landlord_ID_number" jdbcType="VARCHAR" property="landlordIdNumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name_of_landlord, contact_number, public_security_responsibility, landlord_ID_number
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from situation_of_landlord_and_lessorc
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from situation_of_landlord_and_lessorc
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.liudong.pojo.SituationOfLandlordAndLessorc">
+    insert into situation_of_landlord_and_lessorc (id, name_of_landlord, contact_number, 
+      public_security_responsibility, landlord_ID_number
+      )
+    values (#{id,jdbcType=INTEGER}, #{nameOfLandlord,jdbcType=VARCHAR}, #{contactNumber,jdbcType=INTEGER}, 
+      #{publicSecurityResponsibility,jdbcType=INTEGER}, #{landlordIdNumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liudong.pojo.SituationOfLandlordAndLessorc">
+    insert into situation_of_landlord_and_lessorc
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="nameOfLandlord != null">
+        name_of_landlord,
+      </if>
+      <if test="contactNumber != null">
+        contact_number,
+      </if>
+      <if test="publicSecurityResponsibility != null">
+        public_security_responsibility,
+      </if>
+      <if test="landlordIdNumber != null">
+        landlord_ID_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="nameOfLandlord != null">
+        #{nameOfLandlord,jdbcType=VARCHAR},
+      </if>
+      <if test="contactNumber != null">
+        #{contactNumber,jdbcType=INTEGER},
+      </if>
+      <if test="publicSecurityResponsibility != null">
+        #{publicSecurityResponsibility,jdbcType=INTEGER},
+      </if>
+      <if test="landlordIdNumber != null">
+        #{landlordIdNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudong.pojo.SituationOfLandlordAndLessorc">
+    update situation_of_landlord_and_lessorc
+    <set>
+      <if test="nameOfLandlord != null">
+        name_of_landlord = #{nameOfLandlord,jdbcType=VARCHAR},
+      </if>
+      <if test="contactNumber != null">
+        contact_number = #{contactNumber,jdbcType=INTEGER},
+      </if>
+      <if test="publicSecurityResponsibility != null">
+        public_security_responsibility = #{publicSecurityResponsibility,jdbcType=INTEGER},
+      </if>
+      <if test="landlordIdNumber != null">
+        landlord_ID_number = #{landlordIdNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liudong.pojo.SituationOfLandlordAndLessorc">
+    update situation_of_landlord_and_lessorc
+    set name_of_landlord = #{nameOfLandlord,jdbcType=VARCHAR},
+      contact_number = #{contactNumber,jdbcType=INTEGER},
+      public_security_responsibility = #{publicSecurityResponsibility,jdbcType=INTEGER},
+      landlord_ID_number = #{landlordIdNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

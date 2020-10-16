@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liudong.dao.ResidenceInformationMapper">
+  <resultMap id="BaseResultMap" type="com.liudong.pojo.ResidenceInformation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mode_of_residence" jdbcType="INTEGER" property="modeOfResidence" />
+    <result column="reasons_for_residence" jdbcType="INTEGER" property="reasonsForResidence" />
+    <result column="housing_category" jdbcType="INTEGER" property="housingCategory" />
+    <result column="city_county_and_district" jdbcType="VARCHAR" property="cityCountyAndDistrict" />
+    <result column="street_office" jdbcType="VARCHAR" property="streetOffice" />
+    <result column="community" jdbcType="VARCHAR" property="community" />
+    <result column="streets_and_alleys" jdbcType="VARCHAR" property="streetsAndAlleys" />
+    <result column="gate_house_brand" jdbcType="VARCHAR" property="gateHouseBrand" />
+    <result column="detailed_address_of_gatehouse" jdbcType="VARCHAR" property="detailedAddressOfGatehouse" />
+    <result column="room_number" jdbcType="INTEGER" property="roomNumber" />
+    <result column="situation_of_landlord_and_lessor" jdbcType="INTEGER" property="situationOfLandlordAndLessor" />
+    <result column="agent_rental" jdbcType="INTEGER" property="agentRental" />
+    <result column="house_type" jdbcType="INTEGER" property="houseType" />
+    <result column="Information_collector" jdbcType="VARCHAR" property="informationCollector" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, mode_of_residence, reasons_for_residence, housing_category, city_county_and_district, 
+    street_office, community, streets_and_alleys, gate_house_brand, detailed_address_of_gatehouse, 
+    room_number, situation_of_landlord_and_lessor, agent_rental, house_type, Information_collector
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from residence_information
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from residence_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.liudong.pojo.ResidenceInformation">
+    insert into residence_information (id, mode_of_residence, reasons_for_residence, 
+      housing_category, city_county_and_district, 
+      street_office, community, streets_and_alleys, 
+      gate_house_brand, detailed_address_of_gatehouse, 
+      room_number, situation_of_landlord_and_lessor, 
+      agent_rental, house_type, Information_collector
+      )
+    values (#{id,jdbcType=INTEGER}, #{modeOfResidence,jdbcType=INTEGER}, #{reasonsForResidence,jdbcType=INTEGER}, 
+      #{housingCategory,jdbcType=INTEGER}, #{cityCountyAndDistrict,jdbcType=VARCHAR}, 
+      #{streetOffice,jdbcType=VARCHAR}, #{community,jdbcType=VARCHAR}, #{streetsAndAlleys,jdbcType=VARCHAR}, 
+      #{gateHouseBrand,jdbcType=VARCHAR}, #{detailedAddressOfGatehouse,jdbcType=VARCHAR}, 
+      #{roomNumber,jdbcType=INTEGER}, #{situationOfLandlordAndLessor,jdbcType=INTEGER}, 
+      #{agentRental,jdbcType=INTEGER}, #{houseType,jdbcType=INTEGER}, #{informationCollector,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liudong.pojo.ResidenceInformation">
+    insert into residence_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="modeOfResidence != null">
+        mode_of_residence,
+      </if>
+      <if test="reasonsForResidence != null">
+        reasons_for_residence,
+      </if>
+      <if test="housingCategory != null">
+        housing_category,
+      </if>
+      <if test="cityCountyAndDistrict != null">
+        city_county_and_district,
+      </if>
+      <if test="streetOffice != null">
+        street_office,
+      </if>
+      <if test="community != null">
+        community,
+      </if>
+      <if test="streetsAndAlleys != null">
+        streets_and_alleys,
+      </if>
+      <if test="gateHouseBrand != null">
+        gate_house_brand,
+      </if>
+      <if test="detailedAddressOfGatehouse != null">
+        detailed_address_of_gatehouse,
+      </if>
+      <if test="roomNumber != null">
+        room_number,
+      </if>
+      <if test="situationOfLandlordAndLessor != null">
+        situation_of_landlord_and_lessor,
+      </if>
+      <if test="agentRental != null">
+        agent_rental,
+      </if>
+      <if test="houseType != null">
+        house_type,
+      </if>
+      <if test="informationCollector != null">
+        Information_collector,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="modeOfResidence != null">
+        #{modeOfResidence,jdbcType=INTEGER},
+      </if>
+      <if test="reasonsForResidence != null">
+        #{reasonsForResidence,jdbcType=INTEGER},
+      </if>
+      <if test="housingCategory != null">
+        #{housingCategory,jdbcType=INTEGER},
+      </if>
+      <if test="cityCountyAndDistrict != null">
+        #{cityCountyAndDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="streetOffice != null">
+        #{streetOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="community != null">
+        #{community,jdbcType=VARCHAR},
+      </if>
+      <if test="streetsAndAlleys != null">
+        #{streetsAndAlleys,jdbcType=VARCHAR},
+      </if>
+      <if test="gateHouseBrand != null">
+        #{gateHouseBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedAddressOfGatehouse != null">
+        #{detailedAddressOfGatehouse,jdbcType=VARCHAR},
+      </if>
+      <if test="roomNumber != null">
+        #{roomNumber,jdbcType=INTEGER},
+      </if>
+      <if test="situationOfLandlordAndLessor != null">
+        #{situationOfLandlordAndLessor,jdbcType=INTEGER},
+      </if>
+      <if test="agentRental != null">
+        #{agentRental,jdbcType=INTEGER},
+      </if>
+      <if test="houseType != null">
+        #{houseType,jdbcType=INTEGER},
+      </if>
+      <if test="informationCollector != null">
+        #{informationCollector,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudong.pojo.ResidenceInformation">
+    update residence_information
+    <set>
+      <if test="modeOfResidence != null">
+        mode_of_residence = #{modeOfResidence,jdbcType=INTEGER},
+      </if>
+      <if test="reasonsForResidence != null">
+        reasons_for_residence = #{reasonsForResidence,jdbcType=INTEGER},
+      </if>
+      <if test="housingCategory != null">
+        housing_category = #{housingCategory,jdbcType=INTEGER},
+      </if>
+      <if test="cityCountyAndDistrict != null">
+        city_county_and_district = #{cityCountyAndDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="streetOffice != null">
+        street_office = #{streetOffice,jdbcType=VARCHAR},
+      </if>
+      <if test="community != null">
+        community = #{community,jdbcType=VARCHAR},
+      </if>
+      <if test="streetsAndAlleys != null">
+        streets_and_alleys = #{streetsAndAlleys,jdbcType=VARCHAR},
+      </if>
+      <if test="gateHouseBrand != null">
+        gate_house_brand = #{gateHouseBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedAddressOfGatehouse != null">
+        detailed_address_of_gatehouse = #{detailedAddressOfGatehouse,jdbcType=VARCHAR},
+      </if>
+      <if test="roomNumber != null">
+        room_number = #{roomNumber,jdbcType=INTEGER},
+      </if>
+      <if test="situationOfLandlordAndLessor != null">
+        situation_of_landlord_and_lessor = #{situationOfLandlordAndLessor,jdbcType=INTEGER},
+      </if>
+      <if test="agentRental != null">
+        agent_rental = #{agentRental,jdbcType=INTEGER},
+      </if>
+      <if test="houseType != null">
+        house_type = #{houseType,jdbcType=INTEGER},
+      </if>
+      <if test="informationCollector != null">
+        Information_collector = #{informationCollector,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liudong.pojo.ResidenceInformation">
+    update residence_information
+    set mode_of_residence = #{modeOfResidence,jdbcType=INTEGER},
+      reasons_for_residence = #{reasonsForResidence,jdbcType=INTEGER},
+      housing_category = #{housingCategory,jdbcType=INTEGER},
+      city_county_and_district = #{cityCountyAndDistrict,jdbcType=VARCHAR},
+      street_office = #{streetOffice,jdbcType=VARCHAR},
+      community = #{community,jdbcType=VARCHAR},
+      streets_and_alleys = #{streetsAndAlleys,jdbcType=VARCHAR},
+      gate_house_brand = #{gateHouseBrand,jdbcType=VARCHAR},
+      detailed_address_of_gatehouse = #{detailedAddressOfGatehouse,jdbcType=VARCHAR},
+      room_number = #{roomNumber,jdbcType=INTEGER},
+      situation_of_landlord_and_lessor = #{situationOfLandlordAndLessor,jdbcType=INTEGER},
+      agent_rental = #{agentRental,jdbcType=INTEGER},
+      house_type = #{houseType,jdbcType=INTEGER},
+      Information_collector = #{informationCollector,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liudong.dao.InsuranceCoverageMapper">
+  <resultMap id="BaseResultMap" type="com.liudong.pojo.InsuranceCoverage">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="endowment_insurance" jdbcType="INTEGER" property="endowmentInsurance" />
+    <result column="medical_insurance" jdbcType="INTEGER" property="medicalInsurance" />
+    <result column="unemployment_insurance" jdbcType="INTEGER" property="unemploymentInsurance" />
+    <result column="
+employment_injury insurance" jdbcType="INTEGER" property="
+employmentInjuryInsurance" />
+    <result column="
+maternity_insurance" jdbcType="INTEGER" property="
+maternityInsurance" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, endowment_insurance, medical_insurance, unemployment_insurance, "
+employment_injury insurance", 
+    
+maternity_insurance
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from insurance_coverage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from insurance_coverage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.liudong.pojo.InsuranceCoverage">
+    insert into insurance_coverage (id, endowment_insurance, medical_insurance, 
+      unemployment_insurance, "
+employment_injury insurance", 
+      
+maternity_insurance)
+    values (#{id,jdbcType=INTEGER}, #{endowmentInsurance,jdbcType=INTEGER}, #{medicalInsurance,jdbcType=INTEGER}, 
+      #{unemploymentInsurance,jdbcType=INTEGER}, #{
+employmentInjuryInsurance,jdbcType=INTEGER}, 
+      #{
+maternityInsurance,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liudong.pojo.InsuranceCoverage">
+    insert into insurance_coverage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="endowmentInsurance != null">
+        endowment_insurance,
+      </if>
+      <if test="medicalInsurance != null">
+        medical_insurance,
+      </if>
+      <if test="unemploymentInsurance != null">
+        unemployment_insurance,
+      </if>
+      <if test="
+employmentInjuryInsurance != null">
+        "
+employment_injury insurance",
+      </if>
+      <if test="
+maternityInsurance != null">
+        
+maternity_insurance,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="endowmentInsurance != null">
+        #{endowmentInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="medicalInsurance != null">
+        #{medicalInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="unemploymentInsurance != null">
+        #{unemploymentInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="
+employmentInjuryInsurance != null">
+        #{
+employmentInjuryInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="
+maternityInsurance != null">
+        #{
+maternityInsurance,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudong.pojo.InsuranceCoverage">
+    update insurance_coverage
+    <set>
+      <if test="endowmentInsurance != null">
+        endowment_insurance = #{endowmentInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="medicalInsurance != null">
+        medical_insurance = #{medicalInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="unemploymentInsurance != null">
+        unemployment_insurance = #{unemploymentInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="
+employmentInjuryInsurance != null">
+        "
+employment_injury insurance" = #{
+employmentInjuryInsurance,jdbcType=INTEGER},
+      </if>
+      <if test="
+maternityInsurance != null">
+        
+maternity_insurance = #{
+maternityInsurance,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liudong.pojo.InsuranceCoverage">
+    update insurance_coverage
+    set endowment_insurance = #{endowmentInsurance,jdbcType=INTEGER},
+      medical_insurance = #{medicalInsurance,jdbcType=INTEGER},
+      unemployment_insurance = #{unemploymentInsurance,jdbcType=INTEGER},
+      "
+employment_injury insurance" = #{
+employmentInjuryInsurance,jdbcType=INTEGER},
+      
+maternity_insurance = #{
+maternityInsurance,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

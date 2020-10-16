@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liudong.dao.PersonalMapper">
+  <resultMap id="BaseResultMap" type="com.liudong.pojo.Personal">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="c_name" jdbcType="VARCHAR" property="cName" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="local_time" jdbcType="TIMESTAMP" property="localTime" />
+    <result column="id_number" jdbcType="INTEGER" property="idNumber" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="detailed_address_id" jdbcType="VARCHAR" property="detailedAddressId" />
+    <result column="present_address_id" jdbcType="VARCHAR" property="presentAddressId" />
+    <result column="fixed_phone" jdbcType="VARCHAR" property="fixedPhone" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="contact_fixed_phone" jdbcType="VARCHAR" property="contactFixedPhone" />
+    <result column="contact_mobile_phone" jdbcType="VARCHAR" property="contactMobilePhone" />
+    <result column="degree_of_education" jdbcType="INTEGER" property="degreeOfEducation" />
+    <result column="political_outlook" jdbcType="INTEGER" property="politicalOutlook" />
+    <result column="religious_belief" jdbcType="INTEGER" property="religiousBelief" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+    <result column="weight" jdbcType="DOUBLE" property="weight" />
+    <result column="blood_type" jdbcType="VARCHAR" property="bloodType" />
+    <result column="health" jdbcType="VARCHAR" property="health" />
+    <result column="employment_status" jdbcType="VARCHAR" property="employmentStatus" />
+    <result column="marital_status" jdbcType="VARCHAR" property="maritalStatus" />
+    <result column="picture" jdbcType="VARCHAR" property="picture" />
+    <result column="spouse_information_id" jdbcType="VARCHAR" property="spouseInformationId" />
+    <result column="member_of_family_id" jdbcType="VARCHAR" property="memberOfFamilyId" />
+    <result column="family_planning_information_id" jdbcType="VARCHAR" property="familyPlanningInformationId" />
+    <result column="employment_information_id" jdbcType="VARCHAR" property="employmentInformationId" />
+    <result column="residence_information_idd" jdbcType="VARCHAR" property="residenceInformationIdd" />
+    <result column="disability_card_number" jdbcType="VARCHAR" property="disabilityCardNumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, c_name, sex, local_time, id_number, nation, detailed_address_id, present_address_id, 
+    fixed_phone, mobile_phone, contact_name, contact_fixed_phone, contact_mobile_phone, 
+    degree_of_education, political_outlook, religious_belief, height, weight, blood_type, 
+    health, employment_status, marital_status, picture, spouse_information_id, member_of_family_id, 
+    family_planning_information_id, employment_information_id, residence_information_idd, 
+    disability_card_number
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from personal
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from personal
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.liudong.pojo.Personal">
+    insert into personal (id, name, c_name, 
+      sex, local_time, id_number, 
+      nation, detailed_address_id, present_address_id, 
+      fixed_phone, mobile_phone, contact_name, 
+      contact_fixed_phone, contact_mobile_phone, 
+      degree_of_education, political_outlook, religious_belief, 
+      height, weight, blood_type, 
+      health, employment_status, marital_status, 
+      picture, spouse_information_id, member_of_family_id, 
+      family_planning_information_id, employment_information_id, 
+      residence_information_idd, disability_card_number
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{cName,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{localTime,jdbcType=TIMESTAMP}, #{idNumber,jdbcType=INTEGER}, 
+      #{nation,jdbcType=VARCHAR}, #{detailedAddressId,jdbcType=VARCHAR}, #{presentAddressId,jdbcType=VARCHAR}, 
+      #{fixedPhone,jdbcType=VARCHAR}, #{mobilePhone,jdbcType=VARCHAR}, #{contactName,jdbcType=VARCHAR}, 
+      #{contactFixedPhone,jdbcType=VARCHAR}, #{contactMobilePhone,jdbcType=VARCHAR}, 
+      #{degreeOfEducation,jdbcType=INTEGER}, #{politicalOutlook,jdbcType=INTEGER}, #{religiousBelief,jdbcType=INTEGER}, 
+      #{height,jdbcType=INTEGER}, #{weight,jdbcType=DOUBLE}, #{bloodType,jdbcType=VARCHAR}, 
+      #{health,jdbcType=VARCHAR}, #{employmentStatus,jdbcType=VARCHAR}, #{maritalStatus,jdbcType=VARCHAR}, 
+      #{picture,jdbcType=VARCHAR}, #{spouseInformationId,jdbcType=VARCHAR}, #{memberOfFamilyId,jdbcType=VARCHAR}, 
+      #{familyPlanningInformationId,jdbcType=VARCHAR}, #{employmentInformationId,jdbcType=VARCHAR}, 
+      #{residenceInformationIdd,jdbcType=VARCHAR}, #{disabilityCardNumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.liudong.pojo.Personal">
+    insert into personal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="cName != null">
+        c_name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="localTime != null">
+        local_time,
+      </if>
+      <if test="idNumber != null">
+        id_number,
+      </if>
+      <if test="nation != null">
+        nation,
+      </if>
+      <if test="detailedAddressId != null">
+        detailed_address_id,
+      </if>
+      <if test="presentAddressId != null">
+        present_address_id,
+      </if>
+      <if test="fixedPhone != null">
+        fixed_phone,
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone,
+      </if>
+      <if test="contactName != null">
+        contact_name,
+      </if>
+      <if test="contactFixedPhone != null">
+        contact_fixed_phone,
+      </if>
+      <if test="contactMobilePhone != null">
+        contact_mobile_phone,
+      </if>
+      <if test="degreeOfEducation != null">
+        degree_of_education,
+      </if>
+      <if test="politicalOutlook != null">
+        political_outlook,
+      </if>
+      <if test="religiousBelief != null">
+        religious_belief,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="bloodType != null">
+        blood_type,
+      </if>
+      <if test="health != null">
+        health,
+      </if>
+      <if test="employmentStatus != null">
+        employment_status,
+      </if>
+      <if test="maritalStatus != null">
+        marital_status,
+      </if>
+      <if test="picture != null">
+        picture,
+      </if>
+      <if test="spouseInformationId != null">
+        spouse_information_id,
+      </if>
+      <if test="memberOfFamilyId != null">
+        member_of_family_id,
+      </if>
+      <if test="familyPlanningInformationId != null">
+        family_planning_information_id,
+      </if>
+      <if test="employmentInformationId != null">
+        employment_information_id,
+      </if>
+      <if test="residenceInformationIdd != null">
+        residence_information_idd,
+      </if>
+      <if test="disabilityCardNumber != null">
+        disability_card_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cName != null">
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="localTime != null">
+        #{localTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idNumber != null">
+        #{idNumber,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedAddressId != null">
+        #{detailedAddressId,jdbcType=VARCHAR},
+      </if>
+      <if test="presentAddressId != null">
+        #{presentAddressId,jdbcType=VARCHAR},
+      </if>
+      <if test="fixedPhone != null">
+        #{fixedPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactFixedPhone != null">
+        #{contactFixedPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobilePhone != null">
+        #{contactMobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="degreeOfEducation != null">
+        #{degreeOfEducation,jdbcType=INTEGER},
+      </if>
+      <if test="politicalOutlook != null">
+        #{politicalOutlook,jdbcType=INTEGER},
+      </if>
+      <if test="religiousBelief != null">
+        #{religiousBelief,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="bloodType != null">
+        #{bloodType,jdbcType=VARCHAR},
+      </if>
+      <if test="health != null">
+        #{health,jdbcType=VARCHAR},
+      </if>
+      <if test="employmentStatus != null">
+        #{employmentStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null">
+        #{maritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="spouseInformationId != null">
+        #{spouseInformationId,jdbcType=VARCHAR},
+      </if>
+      <if test="memberOfFamilyId != null">
+        #{memberOfFamilyId,jdbcType=VARCHAR},
+      </if>
+      <if test="familyPlanningInformationId != null">
+        #{familyPlanningInformationId,jdbcType=VARCHAR},
+      </if>
+      <if test="employmentInformationId != null">
+        #{employmentInformationId,jdbcType=VARCHAR},
+      </if>
+      <if test="residenceInformationIdd != null">
+        #{residenceInformationIdd,jdbcType=VARCHAR},
+      </if>
+      <if test="disabilityCardNumber != null">
+        #{disabilityCardNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudong.pojo.Personal">
+    update personal
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cName != null">
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="localTime != null">
+        local_time = #{localTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idNumber != null">
+        id_number = #{idNumber,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="detailedAddressId != null">
+        detailed_address_id = #{detailedAddressId,jdbcType=VARCHAR},
+      </if>
+      <if test="presentAddressId != null">
+        present_address_id = #{presentAddressId,jdbcType=VARCHAR},
+      </if>
+      <if test="fixedPhone != null">
+        fixed_phone = #{fixedPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactFixedPhone != null">
+        contact_fixed_phone = #{contactFixedPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactMobilePhone != null">
+        contact_mobile_phone = #{contactMobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="degreeOfEducation != null">
+        degree_of_education = #{degreeOfEducation,jdbcType=INTEGER},
+      </if>
+      <if test="politicalOutlook != null">
+        political_outlook = #{politicalOutlook,jdbcType=INTEGER},
+      </if>
+      <if test="religiousBelief != null">
+        religious_belief = #{religiousBelief,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="bloodType != null">
+        blood_type = #{bloodType,jdbcType=VARCHAR},
+      </if>
+      <if test="health != null">
+        health = #{health,jdbcType=VARCHAR},
+      </if>
+      <if test="employmentStatus != null">
+        employment_status = #{employmentStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null">
+        marital_status = #{maritalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="spouseInformationId != null">
+        spouse_information_id = #{spouseInformationId,jdbcType=VARCHAR},
+      </if>
+      <if test="memberOfFamilyId != null">
+        member_of_family_id = #{memberOfFamilyId,jdbcType=VARCHAR},
+      </if>
+      <if test="familyPlanningInformationId != null">
+        family_planning_information_id = #{familyPlanningInformationId,jdbcType=VARCHAR},
+      </if>
+      <if test="employmentInformationId != null">
+        employment_information_id = #{employmentInformationId,jdbcType=VARCHAR},
+      </if>
+      <if test="residenceInformationIdd != null">
+        residence_information_idd = #{residenceInformationIdd,jdbcType=VARCHAR},
+      </if>
+      <if test="disabilityCardNumber != null">
+        disability_card_number = #{disabilityCardNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liudong.pojo.Personal">
+    update personal
+    set name = #{name,jdbcType=VARCHAR},
+      c_name = #{cName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      local_time = #{localTime,jdbcType=TIMESTAMP},
+      id_number = #{idNumber,jdbcType=INTEGER},
+      nation = #{nation,jdbcType=VARCHAR},
+      detailed_address_id = #{detailedAddressId,jdbcType=VARCHAR},
+      present_address_id = #{presentAddressId,jdbcType=VARCHAR},
+      fixed_phone = #{fixedPhone,jdbcType=VARCHAR},
+      mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_fixed_phone = #{contactFixedPhone,jdbcType=VARCHAR},
+      contact_mobile_phone = #{contactMobilePhone,jdbcType=VARCHAR},
+      degree_of_education = #{degreeOfEducation,jdbcType=INTEGER},
+      political_outlook = #{politicalOutlook,jdbcType=INTEGER},
+      religious_belief = #{religiousBelief,jdbcType=INTEGER},
+      height = #{height,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=DOUBLE},
+      blood_type = #{bloodType,jdbcType=VARCHAR},
+      health = #{health,jdbcType=VARCHAR},
+      employment_status = #{employmentStatus,jdbcType=VARCHAR},
+      marital_status = #{maritalStatus,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR},
+      spouse_information_id = #{spouseInformationId,jdbcType=VARCHAR},
+      member_of_family_id = #{memberOfFamilyId,jdbcType=VARCHAR},
+      family_planning_information_id = #{familyPlanningInformationId,jdbcType=VARCHAR},
+      employment_information_id = #{employmentInformationId,jdbcType=VARCHAR},
+      residence_information_idd = #{residenceInformationIdd,jdbcType=VARCHAR},
+      disability_card_number = #{disabilityCardNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

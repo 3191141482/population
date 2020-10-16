@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liudong.dao.EmploymentInformationMapper">
+  <resultMap id="BaseResultMap" type="com.liudong.pojo.EmploymentInformation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="work_unit" jdbcType="VARCHAR" property="workUnit" />
+    <result column="unit_type" jdbcType="VARCHAR" property="unitType" />
+    <result column="unit_address" jdbcType="VARCHAR" property="unitAddress" />
+    <result column="organization_code" jdbcType="VARCHAR" property="organizationCode" />
+    <result column="legal_representative" jdbcType="VARCHAR" property="legalRepresentative" />
+    <result column="labor_contract" jdbcType="VARCHAR" property="laborContract" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="insurance_coverage" jdbcType="VARCHAR" property="insuranceCoverage" />
+    <result column="unit_social_security_number" jdbcType="INTEGER" property="unitSocialSecurityNumber" />
+    <result column="unit_no" jdbcType="INTEGER" property="unitNo" />
+    <result column="number_of_worker" jdbcType="INTEGER" property="numberOfWorker" />
+    <result column="industry_category" jdbcType="VARCHAR" property="industryCategory" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="vocational_skills_boarding" jdbcType="VARCHAR" property="vocationalSkillsBoarding" />
+    <result column="occupation" jdbcType="VARCHAR" property="occupation" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, work_unit, unit_type, unit_address, organization_code, legal_representative, 
+    labor_contract, contact_phone, insurance_coverage, unit_social_security_number, unit_no, 
+    number_of_worker, industry_category, title, vocational_skills_boarding, occupation
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from employment_information
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from employment_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.liudong.pojo.EmploymentInformation">
+    insert into employment_information (id, work_unit, unit_type, 
+      unit_address, organization_code, legal_representative, 
+      labor_contract, contact_phone, insurance_coverage, 
+      unit_social_security_number, unit_no, number_of_worker, 
+      industry_category, title, vocational_skills_boarding, 
+      occupation)
+    values (#{id,jdbcType=INTEGER}, #{workUnit,jdbcType=VARCHAR}, #{unitType,jdbcType=VARCHAR}, 
+      #{unitAddress,jdbcType=VARCHAR}, #{organizationCode,jdbcType=VARCHAR}, #{legalRepresentative,jdbcType=VARCHAR}, 
+      #{laborContract,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, #{insuranceCoverage,jdbcType=VARCHAR}, 
+      #{unitSocialSecurityNumber,jdbcType=INTEGER}, #{unitNo,jdbcType=INTEGER}, #{numberOfWorker,jdbcType=INTEGER}, 
+      #{industryCategory,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{vocationalSkillsBoarding,jdbcType=VARCHAR}, 
+      #{occupation,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liudong.pojo.EmploymentInformation">
+    insert into employment_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="workUnit != null">
+        work_unit,
+      </if>
+      <if test="unitType != null">
+        unit_type,
+      </if>
+      <if test="unitAddress != null">
+        unit_address,
+      </if>
+      <if test="organizationCode != null">
+        organization_code,
+      </if>
+      <if test="legalRepresentative != null">
+        legal_representative,
+      </if>
+      <if test="laborContract != null">
+        labor_contract,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="insuranceCoverage != null">
+        insurance_coverage,
+      </if>
+      <if test="unitSocialSecurityNumber != null">
+        unit_social_security_number,
+      </if>
+      <if test="unitNo != null">
+        unit_no,
+      </if>
+      <if test="numberOfWorker != null">
+        number_of_worker,
+      </if>
+      <if test="industryCategory != null">
+        industry_category,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="vocationalSkillsBoarding != null">
+        vocational_skills_boarding,
+      </if>
+      <if test="occupation != null">
+        occupation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="workUnit != null">
+        #{workUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="unitType != null">
+        #{unitType,jdbcType=VARCHAR},
+      </if>
+      <if test="unitAddress != null">
+        #{unitAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationCode != null">
+        #{organizationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentative != null">
+        #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="laborContract != null">
+        #{laborContract,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceCoverage != null">
+        #{insuranceCoverage,jdbcType=VARCHAR},
+      </if>
+      <if test="unitSocialSecurityNumber != null">
+        #{unitSocialSecurityNumber,jdbcType=INTEGER},
+      </if>
+      <if test="unitNo != null">
+        #{unitNo,jdbcType=INTEGER},
+      </if>
+      <if test="numberOfWorker != null">
+        #{numberOfWorker,jdbcType=INTEGER},
+      </if>
+      <if test="industryCategory != null">
+        #{industryCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="vocationalSkillsBoarding != null">
+        #{vocationalSkillsBoarding,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null">
+        #{occupation,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudong.pojo.EmploymentInformation">
+    update employment_information
+    <set>
+      <if test="workUnit != null">
+        work_unit = #{workUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="unitType != null">
+        unit_type = #{unitType,jdbcType=VARCHAR},
+      </if>
+      <if test="unitAddress != null">
+        unit_address = #{unitAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationCode != null">
+        organization_code = #{organizationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentative != null">
+        legal_representative = #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="laborContract != null">
+        labor_contract = #{laborContract,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceCoverage != null">
+        insurance_coverage = #{insuranceCoverage,jdbcType=VARCHAR},
+      </if>
+      <if test="unitSocialSecurityNumber != null">
+        unit_social_security_number = #{unitSocialSecurityNumber,jdbcType=INTEGER},
+      </if>
+      <if test="unitNo != null">
+        unit_no = #{unitNo,jdbcType=INTEGER},
+      </if>
+      <if test="numberOfWorker != null">
+        number_of_worker = #{numberOfWorker,jdbcType=INTEGER},
+      </if>
+      <if test="industryCategory != null">
+        industry_category = #{industryCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="vocationalSkillsBoarding != null">
+        vocational_skills_boarding = #{vocationalSkillsBoarding,jdbcType=VARCHAR},
+      </if>
+      <if test="occupation != null">
+        occupation = #{occupation,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liudong.pojo.EmploymentInformation">
+    update employment_information
+    set work_unit = #{workUnit,jdbcType=VARCHAR},
+      unit_type = #{unitType,jdbcType=VARCHAR},
+      unit_address = #{unitAddress,jdbcType=VARCHAR},
+      organization_code = #{organizationCode,jdbcType=VARCHAR},
+      legal_representative = #{legalRepresentative,jdbcType=VARCHAR},
+      labor_contract = #{laborContract,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      insurance_coverage = #{insuranceCoverage,jdbcType=VARCHAR},
+      unit_social_security_number = #{unitSocialSecurityNumber,jdbcType=INTEGER},
+      unit_no = #{unitNo,jdbcType=INTEGER},
+      number_of_worker = #{numberOfWorker,jdbcType=INTEGER},
+      industry_category = #{industryCategory,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      vocational_skills_boarding = #{vocationalSkillsBoarding,jdbcType=VARCHAR},
+      occupation = #{occupation,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liudong.dao.FamilyMembersLivingTogetherMapper">
+  <resultMap id="BaseResultMap" type="com.liudong.pojo.FamilyMembersLivingTogether">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="number_id" jdbcType="VARCHAR" property="numberId" />
+    <result column="
+
+relationship" jdbcType="VARCHAR" property="
+
+relationship" />
+    <result column="citizenship_number" jdbcType="VARCHAR" property="citizenshipNumber" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="date_of_birth" jdbcType="TIMESTAMP" property="dateOfBirth" />
+    <result column="have_vaccination_certificate" jdbcType="INTEGER" property="haveVaccinationCertificate" />
+    <result column="studying_in_this_city" jdbcType="INTEGER" property="studyingInThisCity" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, number_id, 
+
+relationship, citizenship_number, full_name, gender, date_of_birth, 
+    have_vaccination_certificate, studying_in_this_city
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from family_members_living_together
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from family_members_living_together
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.liudong.pojo.FamilyMembersLivingTogether">
+    insert into family_members_living_together (id, number_id, 
+
+relationship, 
+      citizenship_number, full_name, gender, 
+      date_of_birth, have_vaccination_certificate, 
+      studying_in_this_city)
+    values (#{id,jdbcType=INTEGER}, #{numberId,jdbcType=VARCHAR}, #{
+
+relationship,jdbcType=VARCHAR}, 
+      #{citizenshipNumber,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, 
+      #{dateOfBirth,jdbcType=TIMESTAMP}, #{haveVaccinationCertificate,jdbcType=INTEGER}, 
+      #{studyingInThisCity,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liudong.pojo.FamilyMembersLivingTogether">
+    insert into family_members_living_together
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="numberId != null">
+        number_id,
+      </if>
+      <if test="
+
+relationship != null">
+        
+
+relationship,
+      </if>
+      <if test="citizenshipNumber != null">
+        citizenship_number,
+      </if>
+      <if test="fullName != null">
+        full_name,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="dateOfBirth != null">
+        date_of_birth,
+      </if>
+      <if test="haveVaccinationCertificate != null">
+        have_vaccination_certificate,
+      </if>
+      <if test="studyingInThisCity != null">
+        studying_in_this_city,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="numberId != null">
+        #{numberId,jdbcType=VARCHAR},
+      </if>
+      <if test="
+
+relationship != null">
+        #{
+
+relationship,jdbcType=VARCHAR},
+      </if>
+      <if test="citizenshipNumber != null">
+        #{citizenshipNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null">
+        #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="dateOfBirth != null">
+        #{dateOfBirth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="haveVaccinationCertificate != null">
+        #{haveVaccinationCertificate,jdbcType=INTEGER},
+      </if>
+      <if test="studyingInThisCity != null">
+        #{studyingInThisCity,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudong.pojo.FamilyMembersLivingTogether">
+    update family_members_living_together
+    <set>
+      <if test="numberId != null">
+        number_id = #{numberId,jdbcType=VARCHAR},
+      </if>
+      <if test="
+
+relationship != null">
+        
+
+relationship = #{
+
+relationship,jdbcType=VARCHAR},
+      </if>
+      <if test="citizenshipNumber != null">
+        citizenship_number = #{citizenshipNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null">
+        full_name = #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="dateOfBirth != null">
+        date_of_birth = #{dateOfBirth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="haveVaccinationCertificate != null">
+        have_vaccination_certificate = #{haveVaccinationCertificate,jdbcType=INTEGER},
+      </if>
+      <if test="studyingInThisCity != null">
+        studying_in_this_city = #{studyingInThisCity,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liudong.pojo.FamilyMembersLivingTogether">
+    update family_members_living_together
+    set number_id = #{numberId,jdbcType=VARCHAR},
+      
+
+relationship = #{
+
+relationship,jdbcType=VARCHAR},
+      citizenship_number = #{citizenshipNumber,jdbcType=VARCHAR},
+      full_name = #{fullName,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      date_of_birth = #{dateOfBirth,jdbcType=TIMESTAMP},
+      have_vaccination_certificate = #{haveVaccinationCertificate,jdbcType=INTEGER},
+      studying_in_this_city = #{studyingInThisCity,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

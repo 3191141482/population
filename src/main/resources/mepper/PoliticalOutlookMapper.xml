@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liudong.dao.PoliticalOutlookMapper">
+  <resultMap id="BaseResultMap" type="com.liudong.pojo.PoliticalOutlook">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="political_outlook_name" jdbcType="VARCHAR" property="politicalOutlookName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, political_outlook_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from political_outlook
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from political_outlook
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.liudong.pojo.PoliticalOutlook">
+    insert into political_outlook (id, political_outlook_name)
+    values (#{id,jdbcType=INTEGER}, #{politicalOutlookName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.liudong.pojo.PoliticalOutlook">
+    insert into political_outlook
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="politicalOutlookName != null">
+        political_outlook_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="politicalOutlookName != null">
+        #{politicalOutlookName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.liudong.pojo.PoliticalOutlook">
+    update political_outlook
+    <set>
+      <if test="politicalOutlookName != null">
+        political_outlook_name = #{politicalOutlookName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.liudong.pojo.PoliticalOutlook">
+    update political_outlook
+    set political_outlook_name = #{politicalOutlookName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
